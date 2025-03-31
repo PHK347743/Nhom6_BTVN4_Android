@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     android:orientation="vertical"
     tools:context=".First_Activity">
 
@@ -14,7 +15,8 @@
         android:layout_marginTop="16dp"
         android:text="THÔNG TIN SINH VIÊN"
         android:textAlignment="center"
-        android:textSize="16sp"
+        android:textColor="#FFFF"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +29,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
         android:text="Họ Và Tên:"
+        android:textColor="#FFFF"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -36,8 +39,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="44dp"
         android:text="MSSV:"
+        android:textColor="#FFFF"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -49,6 +53,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
         android:text="Lớp:"
+        android:textColor="#FFFF"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -60,6 +65,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
         android:text="SĐT:"
+        android:textColor="#FFFF"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -71,6 +77,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
+        android:background="@android:drawable/editbox_background_normal"
         android:ems="10"
         android:hint="Nhập họ tên....."
         android:inputType="text"
@@ -87,6 +94,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
+        android:background="@android:drawable/editbox_background_normal"
         android:hint="Nhập mã số sinh viên....."
         android:inputType="text"
         android:textAlignment="viewStart"
@@ -103,6 +111,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
+        android:background="@android:drawable/editbox_background_normal"
         android:hint="Nhập Lớp....."
         android:inputType="text"
         android:textAlignment="viewStart"
@@ -119,6 +128,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
+        android:background="@android:drawable/editbox_background_normal"
         android:hint="Nhập số điện thoại....."
         android:inputType="phone"
         android:textAlignment="viewStart"
@@ -135,7 +145,8 @@
         android:layout_marginTop="24dp"
         android:text="SINH VIÊN NĂM"
         android:textAlignment="center"
-        android:textSize="16sp"
+        android:textColor="#FFFF"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -159,7 +170,9 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:minHeight="48dp"
-            android:text="Năm 1" />
+            android:buttonTint="#FFFF"
+            android:text="Năm 1"
+            android:textColor="#FFFF" />
 
         <RadioButton
             android:id="@+id/radioButton2"
@@ -167,7 +180,9 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:minHeight="48dp"
-            android:text="Năm 2" />
+            android:buttonTint="#FFFF"
+            android:text="Năm 2"
+            android:textColor="#FFFF" />
 
         <RadioButton
             android:id="@+id/radioButton3"
@@ -175,7 +190,9 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:minHeight="48dp"
-            android:text="Năm 3" />
+            android:buttonTint="#FFFF"
+            android:text="Năm 3"
+            android:textColor="#FFFF" />
 
         <RadioButton
             android:id="@+id/radioButton4"
@@ -183,7 +200,9 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:minHeight="48dp"
-            android:text="Năm 4" />
+            android:buttonTint="#FFFF"
+            android:text="Năm 4"
+            android:textColor="#FFFF" />
     </RadioGroup>
 
     <TextView
@@ -193,7 +212,8 @@
         android:layout_marginTop="16dp"
         android:text="CHUYÊN NGÀNH"
         android:textAlignment="center"
-        android:textSize="16sp"
+        android:textColor="#FFFF"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -217,7 +237,9 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:minHeight="48dp"
-            android:text="Nhúng" />
+            android:buttonTint="#FFFF"
+            android:text="Nhúng"
+            android:textColor="#FFFF" />
 
         <CheckBox
             android:id="@+id/checkDT"
@@ -225,7 +247,9 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:minHeight="48dp"
-            android:text="Điện Tử" />
+            android:buttonTint="#FFFF"
+            android:text="Điện Tử"
+            android:textColor="#FFFF" />
 
         <CheckBox
             android:id="@+id/checkVT"
@@ -233,50 +257,54 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:minHeight="48dp"
-            android:text="Viễn Thông" />
+            android:buttonTint="#FFFF"
+            android:text="Viễn Thông"
+            android:textColor="#FFFF" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView11"
+    <LinearLayout
+        android:id="@+id/buttonContainer"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="KẾ HOẠCH PHÁT TRIỂN BẢN THÂN"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkboxContainer" />
-
-    <EditText
-        android:id="@+id/editkehoach"
-        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:background="@android:drawable/editbox_background_normal"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Nhập kế hoạch phát triển bản thân....."
-        android:inputType="textMultiLine"
-        android:minHeight="100dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonGui"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-    <Button
-        android:id="@+id/buttonGui"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:minHeight="48dp"
-        android:text="Gửi Thông tin"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxContainer">
+
+        <Button
+            android:id="@+id/buttonCall"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:backgroundTint="#000000"
+            android:text="Gọi"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonSms"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:backgroundTint="#000000"
+            android:text="Gửi SMS"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonCamera"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:backgroundTint="#000000"
+            android:text="Camera"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonGui"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:backgroundTint="#000000"
+            android:text="Gửi Thông tin"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

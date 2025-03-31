@@ -1,7 +1,9 @@
 package com.example.bt1;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -14,10 +16,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class First_Activity extends AppCompatActivity {
 
-    private EditText editHoten, editMssv, editLop, editSdt, editKehoach;
+    private EditText editHoten, editMssv, editLop, editSdt;
     private RadioGroup radioGroup;
     private CheckBox checkNhung, checkDT, checkVT;
-    private Button buttonGui;
+    private Button buttonGui, buttonCall, buttonSms, buttonCamera;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,69 +29,101 @@ public class First_Activity extends AppCompatActivity {
         }
         setContentView(R.layout.first_activity);
 
-        // Ánh xạ các thành phần UI
+        // Ánh xạ UI
         editHoten = findViewById(R.id.editHoten);
         editMssv = findViewById(R.id.editMssv);
         editLop = findViewById(R.id.editLop);
         editSdt = findViewById(R.id.editSdt);
-        editKehoach = findViewById(R.id.editkehoach);
 
         radioGroup = findViewById(R.id.radioGroup);
-
         checkNhung = findViewById(R.id.checkNhung);
         checkDT = findViewById(R.id.checkDT);
         checkVT = findViewById(R.id.checkVT);
 
-        // Thêm listener cho các checkbox để đảm bảo chỉ chọn được một
+        buttonGui = findViewById(R.id.buttonGui);
+        buttonCall = findViewById(R.id.buttonCall);
+        buttonSms = findViewById(R.id.buttonSms);
+        buttonCamera = findViewById(R.id.buttonCamera);
+
         setupCheckBoxListeners();
 
-        buttonGui = findViewById(R.id.buttonGui);
+        // Gửi thông tin
+        buttonGui.setOnClickListener(v -> guiThongTin());
 
-        // Xử lý sự kiện khi nhấn nút Gửi thông tin
-        buttonGui.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                guiThongTin();
-            }
-        });
+        // Mở giao diện gọi điện
+        buttonCall.setOnClickListener(v -> moGiaoDienGoi());
+
+        // Mở giao diện gửi SMS
+        buttonSms.setOnClickListener(v -> moGiaoDienSms());
+
+        // Mở camera
+        buttonCamera.setOnClickListener(v -> moCamera());
     }
 
-    // Thiết lập listener cho checkbox để chỉ chọn được một
-    private void setupCheckBoxListeners() {
-        View.OnClickListener checkBoxListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CheckBox clickedCheckBox = (CheckBox) v;
+    // Mở giao diện gọi điện với số điện thoại đã nhập
+    private void moGiaoDienGoi() {
+        String sdt = editSdt.getText().toString().trim();
+        if (sdt.isEmpty()) {
+            Toast.makeText(this, "Vui lòng nhập số điện thoại!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-                // Nếu checkbox được click là đã check, bỏ check các checkbox khác
-                if (clickedCheckBox.isChecked()) {
-                    if (clickedCheckBox == checkNhung) {
-                        checkDT.setChecked(false);
-                        checkVT.setChecked(false);
-                    } else if (clickedCheckBox == checkDT) {
-                        checkNhung.setChecked(false);
-                        checkVT.setChecked(false);
-                    } else if (clickedCheckBox == checkVT) {
-                        checkNhung.setChecked(false);
-                        checkDT.setChecked(false);
-                    }
-                }
-            }
-        };
-
-        // Gán listener cho từng checkbox
-        checkNhung.setOnClickListener(checkBoxListener);
-        checkDT.setOnClickListener(checkBoxListener);
-        checkVT.setOnClickListener(checkBoxListener);
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:" + sdt));
+        startActivity(intent);
     }
 
+    // Mở giao diện SMS với nội dung tin nhắn là thông tin đã nhập
+    // Mở giao diện nhắn tin có sẵn của điện thoại
+    private void moGiaoDienSms() {
+        String sdt = editSdt.getText().toString().trim();
+        if (sdt.isEmpty()) {
+            Toast.makeText(this, "Vui lòng nhập số điện thoại!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Tạo nội dung tin nhắn
+        String hoTen = editHoten.getText().toString().trim();
+        String mssv = editMssv.getText().toString().trim();
+        String lop = editLop.getText().toString().trim();
+
+        if (hoTen.isEmpty() || mssv.isEmpty() || lop.isEmpty()) {
+            Toast.makeText(this, "Vui lòng điền đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String tinNhan = "Thông tin sinh viên:\n"
+                + "Họ tên: " + hoTen + "\n"
+                + "MSSV: " + mssv + "\n"
+                + "Lớp: " + lop;
+
+        // Tạo Intent gửi tin nhắn
+        Uri uri = Uri.parse("smsto:" + sdt);
+        Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
+        intent.setPackage("com.google.android.apps.messaging"); // Chỉ mở Google Messages
+        intent.putExtra("sms_body", tinNhan);
+
+        try {
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(this, "Không thể mở ứng dụng Messages!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    // Mở giao diện camera để chụp ảnh
+    private void moCamera() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivity(intent);
+    }
+
+    // Gửi thông tin sang màn hình thứ hai
     private void guiThongTin() {
         // Lấy thông tin từ các trường nhập liệu
         String hoTen = editHoten.getText().toString().trim();
         String mssv = editMssv.getText().toString().trim();
         String lop = editLop.getText().toString().trim();
         String sdt = editSdt.getText().toString().trim();
-        String keHoach = editKehoach.getText().toString().trim();
 
         // Kiểm tra thông tin bắt buộc
         if (hoTen.isEmpty() || mssv.isEmpty() || lop.isEmpty() || sdt.isEmpty()) {
@@ -133,8 +167,22 @@ public class First_Activity extends AppCompatActivity {
         intent.putExtra("SDT", sdt);
         intent.putExtra("NAM_HOC", namHoc);
         intent.putExtra("CHUYEN_NGANH", chuyenNganh);
-        intent.putExtra("KE_HOACH", keHoach);
 
         startActivity(intent);
+    }
+
+    private void setupCheckBoxListeners() {
+        View.OnClickListener checkBoxListener = v -> {
+            CheckBox clickedCheckBox = (CheckBox) v;
+            if (clickedCheckBox.isChecked()) {
+                checkNhung.setChecked(clickedCheckBox == checkNhung);
+                checkDT.setChecked(clickedCheckBox == checkDT);
+                checkVT.setChecked(clickedCheckBox == checkVT);
+            }
+        };
+
+        checkNhung.setOnClickListener(checkBoxListener);
+        checkDT.setOnClickListener(checkBoxListener);
+        checkVT.setOnClickListener(checkBoxListener);
     }
 }

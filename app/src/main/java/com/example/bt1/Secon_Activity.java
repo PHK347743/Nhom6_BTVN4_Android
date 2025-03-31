@@ -33,7 +33,6 @@ public class Secon_Activity extends AppCompatActivity {
             String sdt = intent.getStringExtra("SDT");
             String namHoc = intent.getStringExtra("NAM_HOC");
             String chuyenNganh = intent.getStringExtra("CHUYEN_NGANH");
-            String keHoach = intent.getStringExtra("KE_HOACH");
 
             // Tạo chuỗi thông tin để hiển thị
             StringBuilder thongTin = new StringBuilder();
@@ -43,13 +42,6 @@ public class Secon_Activity extends AppCompatActivity {
             thongTin.append("Lớp: ").append(lop).append("\n\n");
             thongTin.append("Số điện thoại: ").append(sdt).append("\n\n");
             thongTin.append("Sinh viên: ").append(namHoc).append("\n\n");
-            thongTin.append("Chuyên ngành: ").append(chuyenNganh).append("\n\n");
-
-            if (keHoach != null && !keHoach.isEmpty()) {
-                thongTin.append("Kế hoạch phát triển bản thân:\n").append(keHoach);
-            } else {
-                thongTin.append("Kế hoạch phát triển bản thân: Chưa có");
-            }
 
             // Hiển thị thông tin
             textViewThongTin.setText(thongTin.toString());
